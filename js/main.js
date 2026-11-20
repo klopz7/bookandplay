@@ -34,6 +34,7 @@
       nav.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      toggle.querySelector("use")?.setAttribute("href", open ? "#i-x" : "#i-menu");
       document.body.classList.toggle("nav-open", open);
     };
     toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));

@@ -20,6 +20,7 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* nunca permitir scroll horizontal (clip no rompe position: sticky) */
 }
 body.nav-open { overflow: hidden; }
 
@@ -102,12 +103,18 @@ svg:has(> use) {
 /* ---------- Header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: color-mix(in oklab, var(--color-bg) 85%, transparent);
-  backdrop-filter: saturate(160%) blur(12px);
-  -webkit-backdrop-filter: saturate(160%) blur(12px);
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease, box-shadow .2s ease;
 }
+/* El desenfoque va en un pseudo-elemento: si se pone backdrop-filter en el
+   propio header, el menú móvil (position: fixed) queda atrapado dentro de él. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: color-mix(in oklab, var(--color-bg) 85%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+}
+body.nav-open .site-header::before { background: var(--color-bg); }
 .site-header.is-scrolled { border-bottom-color: var(--color-border); box-shadow: var(--shadow-sm); }
 .site-header__inner { display: flex; align-items: center; gap: 24px; height: 72px; }
 

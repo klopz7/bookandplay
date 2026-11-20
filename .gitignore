@@ -3,6 +3,9 @@
 *.pdf
 Captura de pantalla*.png
 
+# Plan de trabajo interno del equipo
+PLAN.md
+
 # Sistema / editores
 .DS_Store
 Thumbs.db

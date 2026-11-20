@@ -1,0 +1,12 @@
+# Documentos del curso: contienen nombres y números de cuenta del equipo.
+# GitHub Pages publica todo el repo, así que NO se suben.
+*.pdf
+Captura de pantalla*.png
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

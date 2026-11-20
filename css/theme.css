@@ -1,0 +1,108 @@
+/* =====================================================================
+   TEMA DE COLORES — Book & Play
+   ---------------------------------------------------------------------
+   Para cambiar la colorimetría de TODO el sitio, editá solo el bloque
+   "1. COLORES DE MARCA". El resto se deriva automáticamente.
+
+   Alternativas:
+   - Probar paletas en vivo: abrí el sitio con ?colores  (ej: index.html?colores)
+   - Desde la consola del navegador:
+       BookPlayTheme.setBrandColors({ primary: '#ff5a1f' })
+       BookPlayTheme.applyPalette('electrico')
+   ===================================================================== */
+
+:root {
+  /* ---------- 1. COLORES DE MARCA (lo único que hay que tocar) ---------- */
+  --brand-primary: #18a957;   /* Botones, enlaces, acentos principales      */
+  --brand-secondary: #0e1b2c; /* Fondos oscuros, footer, títulos            */
+  --brand-accent: #ffc20e;    /* Realces: badges, ofertas, detalles         */
+  --brand-neutral: #64748b;   /* Base de los grises (bordes, texto suave)   */
+
+  /* Texto que va ENCIMA de cada color de marca.
+     theme.js los recalcula solo según el contraste; estos son el respaldo. */
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-accent: #1a1a1a;
+  /* Primario usado como texto sobre fondo blanco (theme.js lo oscurece si hace falta) */
+  --primary-ink: color-mix(in oklab, var(--brand-primary) 80%, black);
+
+  /* ---------- 2. DERIVADOS AUTOMÁTICOS (no hace falta tocarlos) ---------- */
+  --primary-700: color-mix(in oklab, var(--brand-primary) 72%, black);
+  --primary-600: color-mix(in oklab, var(--brand-primary) 86%, black);
+  --primary-300: color-mix(in oklab, var(--brand-primary) 55%, white);
+  --primary-200: color-mix(in oklab, var(--brand-primary) 30%, white);
+  --primary-100: color-mix(in oklab, var(--brand-primary) 14%, white);
+  --primary-50: color-mix(in oklab, var(--brand-primary) 6%, white);
+
+  --accent-600: color-mix(in oklab, var(--brand-accent) 85%, black);
+  --accent-100: color-mix(in oklab, var(--brand-accent) 22%, white);
+
+  --secondary-900: color-mix(in oklab, var(--brand-secondary) 80%, black);
+  --secondary-700: color-mix(in oklab, var(--brand-secondary) 85%, white);
+  --secondary-600: color-mix(in oklab, var(--brand-secondary) 72%, white);
+
+  /* Superficies y texto */
+  --color-bg: #ffffff;
+  --color-surface: color-mix(in oklab, var(--brand-neutral) 5%, white);
+  --color-surface-2: color-mix(in oklab, var(--brand-neutral) 11%, white);
+  --color-border: color-mix(in oklab, var(--brand-neutral) 22%, white);
+  --color-text: color-mix(in oklab, var(--brand-secondary) 92%, black);
+  --color-text-muted: color-mix(in oklab, var(--brand-neutral) 88%, black);
+  --color-text-on-dark: #f1f5f9;
+  --color-text-on-dark-muted: color-mix(in oklab, var(--brand-neutral) 40%, white);
+
+  /* Estados */
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-whatsapp: #25d366;
+
+  /* ---------- 3. TIPOGRAFÍA ---------- */
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* ---------- 4. FORMA Y SOMBRAS ---------- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.06), 0 1px 3px rgb(15 23 42 / 0.08);
+  --shadow-md: 0 6px 18px rgb(15 23 42 / 0.08), 0 2px 6px rgb(15 23 42 / 0.06);
+  --shadow-lg: 0 24px 48px rgb(15 23 42 / 0.16), 0 8px 16px rgb(15 23 42 / 0.08);
+}
+
+/* =====================================================================
+   PALETAS PREDEFINIDAS
+   Se activan con <html data-theme="nombre"> o con BookPlayTheme.applyPalette('nombre').
+   Para agregar una nueva: copiá un bloque y cambiá los 3 colores
+   (y agregala también en PALETAS dentro de js/theme.js).
+   ===================================================================== */
+[data-theme="cancha"] {
+  --brand-primary: #18a957;
+  --brand-secondary: #0e1b2c;
+  --brand-accent: #ffc20e;
+}
+
+[data-theme="portada"] {
+  /* Inspirada en la portada del plan de negocios (amarillo + gris carbón) */
+  --brand-primary: #ffc20e;
+  --brand-secondary: #2b2b2b;
+  --brand-accent: #ff7a00;
+}
+
+[data-theme="electrico"] {
+  --brand-primary: #1463ff;
+  --brand-secondary: #0b1533;
+  --brand-accent: #c6ff3d;
+}
+
+[data-theme="padel"] {
+  --brand-primary: #b6e51f;
+  --brand-secondary: #13213c;
+  --brand-accent: #ff5a36;
+}
+
+[data-theme="atardecer"] {
+  --brand-primary: #ff5a1f;
+  --brand-secondary: #1c1530;
+  --brand-accent: #ffd23f;
+}

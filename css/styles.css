@@ -507,11 +507,10 @@ body.nav-open .site-header::before { background: var(--color-bg); }
    SEPARACIÓN POR PÚBLICO (jugadores / complejos)
    ===================================================================== */
 
-/* ---------- Barra selectora "Soy: Jugador | Dueño de complejo" ---------- */
+/* ---------- Barra selectora "Jugador | Dueño de complejo" ---------- */
 .site-header:has(.audience-bar) { --header-h: 108px; }
 .audience-bar { background: var(--secondary-900); }
 .audience-bar__inner { display: flex; align-items: center; gap: 6px; height: 36px; }
-.audience-bar__label { margin-right: 4px; font-size: .8rem; color: var(--color-text-on-dark-muted); }
 .audience-bar__link {
   display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-pill);
   font-size: .82rem; font-weight: 700; text-decoration: none; color: var(--color-text-on-dark-muted);

@@ -9,7 +9,7 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 124px; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -102,6 +102,7 @@ svg:has(> use) {
 
 /* ---------- Header ---------- */
 .site-header {
+  --header-h: 72px; /* alto total del header; con barra de público = 36 + 72 */
   position: sticky; top: 0; z-index: 50;
   border-bottom: 1px solid transparent;
   transition: border-color .2s ease, box-shadow .2s ease;
@@ -142,7 +143,7 @@ body.nav-open .site-header::before { background: var(--color-bg); }
 @media (max-width: 960px) {
   .nav-toggle { display: inline-flex; }
   .nav {
-    position: fixed; inset: 72px 0 0 0; z-index: 49;
+    position: fixed; inset: var(--header-h) 0 0 0; z-index: 49;
     flex-direction: column; align-items: stretch; gap: 24px;
     padding: 24px 20px; background: var(--color-bg);
     transform: translateX(100%); visibility: hidden;
@@ -412,7 +413,7 @@ body.nav-open .site-header::before { background: var(--color-bg); }
 }
 
 /* ---------- Testimonios ---------- */
-.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 960px; margin: 0 auto; }
 .quote { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 28px; border-radius: var(--radius-lg); background: var(--color-surface); }
 .quote blockquote { margin: 0; font-size: 1.02rem; }
 .quote figcaption { display: flex; align-items: center; gap: 12px; }
@@ -501,6 +502,102 @@ body.nav-open .site-header::before { background: var(--color-bg); }
 }
 .wa-float:hover { transform: scale(1.08); }
 .wa-float svg { width: 28px; height: 28px; }
+
+/* =====================================================================
+   SEPARACIÓN POR PÚBLICO (jugadores / complejos)
+   ===================================================================== */
+
+/* ---------- Barra selectora "Soy: Jugador | Dueño de complejo" ---------- */
+.site-header:has(.audience-bar) { --header-h: 108px; }
+.audience-bar { background: var(--secondary-900); }
+.audience-bar__inner { display: flex; align-items: center; gap: 6px; height: 36px; }
+.audience-bar__label { margin-right: 4px; font-size: .8rem; color: var(--color-text-on-dark-muted); }
+.audience-bar__link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--radius-pill);
+  font-size: .82rem; font-weight: 700; text-decoration: none; color: var(--color-text-on-dark-muted);
+  transition: background-color .2s ease, color .2s ease;
+}
+.audience-bar__link svg { width: 15px; height: 15px; }
+.audience-bar__link:hover { color: var(--color-text-on-dark); background: var(--secondary-700); }
+.audience-bar__link[aria-current="page"] { background: var(--brand-primary); color: var(--on-primary); }
+
+/* Etiqueta junto al logo en la página de complejos */
+.logo__tag {
+  margin-left: 4px; padding: 3px 8px; border-radius: 6px;
+  background: var(--brand-secondary); color: var(--on-secondary);
+  font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+}
+@media (max-width: 380px) { .logo__tag { display: none; } }
+
+/* ---------- Hero oscuro (complejos) ---------- */
+.hero--dark {
+  color: var(--color-text-on-dark);
+  background:
+    radial-gradient(800px 480px at 90% 0%, color-mix(in oklab, var(--brand-primary) 28%, transparent), transparent 60%),
+    radial-gradient(600px 400px at 0% 100%, color-mix(in oklab, var(--brand-accent) 12%, transparent), transparent 60%),
+    var(--brand-secondary);
+}
+.hero--dark .hero__lead, .hero--dark .hero__trust { color: var(--color-text-on-dark-muted); }
+.hero--dark .hl { color: var(--brand-primary); }
+.hero--dark .hero__trust svg { color: var(--brand-primary); }
+.pill--dark { background: var(--secondary-700); border-color: var(--secondary-600); color: var(--color-text-on-dark); }
+
+.btn--outline-light { border-color: var(--secondary-600); color: var(--color-text-on-dark); background: transparent; }
+.btn--outline-light:hover { border-color: var(--color-text-on-dark); }
+
+/* Notificaciones del dueño (visual del hero de complejos) */
+.notif-stack { display: grid; gap: 12px; max-width: 440px; width: 100%; justify-self: center; }
+.notif {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px;
+  padding: 14px 16px; border-radius: var(--radius-md);
+  background: var(--color-bg); color: var(--color-text); box-shadow: var(--shadow-lg);
+  animation: notif-in .6s ease both;
+}
+.notif:nth-child(2) { animation-delay: .15s; margin-left: 24px; }
+.notif:nth-child(3) { animation-delay: .3s; }
+.notif:nth-child(4) { animation-delay: .45s; margin-left: 24px; }
+.notif strong { display: block; font-size: .92rem; }
+.notif small { display: block; font-size: .8rem; color: var(--color-text-muted); }
+.notif em { align-self: start; font-style: normal; font-size: .72rem; color: var(--color-text-muted); }
+.notif__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--primary-100); color: var(--primary-ink); }
+.notif__icon--ok { background: color-mix(in oklab, var(--color-success) 15%, white); color: var(--color-success); }
+.notif__icon--accent { background: var(--accent-100); color: var(--accent-600); }
+.notif--ai { border: 1.5px solid color-mix(in oklab, var(--brand-accent) 60%, white); }
+@keyframes notif-in { from { opacity: 0; transform: translateY(12px); } }
+@media (prefers-reduced-motion: reduce) { .notif { animation: none; } }
+@media (max-width: 520px) { .notif:nth-child(even) { margin-left: 0; } }
+
+/* Franja de datos en versión clara (complejos) */
+.facts--light { background: var(--color-surface); color: var(--color-text); border-bottom: 1px solid var(--color-border); }
+.facts--light .fact { border-color: var(--color-border); }
+.facts--light .fact strong { color: var(--primary-ink); }
+.facts--light .fact span { color: var(--color-text-muted); }
+
+/* ---------- Variantes de grilla ---------- */
+.pricing--two { grid-template-columns: repeat(2, 1fr); max-width: 820px; margin: 0 auto; }
+.steps--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) {
+  .pricing--two { grid-template-columns: 1fr; max-width: 480px; }
+  .steps--3 { grid-template-columns: 1fr; }
+}
+
+/* ---------- Banner para cambiar de público ---------- */
+.cross-banner {
+  display: flex; align-items: center; gap: 20px; padding: 24px 28px;
+  border-radius: var(--radius-lg); border: 2px dashed var(--color-border);
+  text-decoration: none; color: var(--color-text);
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.cross-banner:hover { border-color: var(--brand-primary); background: var(--primary-50); }
+.cross-banner__icon { display: grid; place-items: center; flex-shrink: 0; width: 56px; height: 56px; border-radius: 16px; background: var(--brand-secondary); color: var(--on-secondary); }
+.cross-banner__icon svg { width: 28px; height: 28px; }
+.cross-banner__text { flex: 1; }
+.cross-banner__text strong { display: block; font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; line-height: 1.1; }
+.cross-banner__text span { color: var(--color-text-muted); }
+.cross-banner__cta { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary-ink); }
+@media (max-width: 760px) {
+  .cross-banner { flex-direction: column; align-items: flex-start; gap: 14px; padding: 22px; }
+}
 
 /* ---------- Animación de aparición ---------- */
 .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }

@@ -11,8 +11,13 @@
   const waUrl = (text) => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(text)}`;
 
   /* ---------- Enlaces de contacto (WhatsApp / email) ---------- */
+  // Página actual: <body data-audience="jugadores|complejos">
+  const audience = document.body.dataset.audience || "jugadores";
+  const msg = cfg.whatsappMensaje;
+  const waMessage = (typeof msg === "object" ? msg[audience] : msg) || "Hola, quiero información sobre Book & Play.";
+
   $$("[data-wa-link]").forEach((a) => {
-    a.href = waUrl(cfg.whatsappMensaje || "Hola");
+    a.href = waUrl(waMessage);
     a.target = "_blank";
     a.rel = "noopener";
   });
@@ -119,7 +124,7 @@
 
       const d = Object.fromEntries(new FormData(form));
       const lineas = [
-        "Hola, quiero solicitar una demo de Book & Play.",
+        "Hola, quiero solicitar una demo de Book & Play para mi complejo.",
         `• Nombre: ${d.nombre}`,
         `• Teléfono: ${d.telefono}`,
         d.complejo && `• Complejo: ${d.complejo}`,

@@ -4,13 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Book &amp; Play — Reserva canchas de fútbol y pádel en segundos</title>
-  <meta name="description" content="Book & Play es la app y plataforma web para reservar canchas de fútbol y pádel en San Pedro Sula. Para dueños: reservas automáticas, anticipo del 50% y estadísticas con IA.">
+  <meta name="description" content="Reserva canchas de fútbol y pádel en San Pedro Sula desde la app o la web. Cupo garantizado con el 50% de anticipo y horas gratis con el programa de recompensas.">
 
   <!-- Open Graph (vista previa al compartir en WhatsApp / redes) -->
   <meta property="og:title" content="Book &amp; Play — Reserva fácil, rápido y sin complicaciones">
-  <meta property="og:description" content="Reserva canchas de fútbol y pádel en segundos. Dueños: cero ausencias con el anticipo del 50%.">
+  <meta property="og:description" content="Busca, compara y reserva canchas de fútbol y pádel en segundos. Cada reserva suma minutos para horas gratis.">
   <meta property="og:type" content="website">
-  <!-- TODO: <meta property="og:image" content="assets/img/og-cover.jpg"> -->
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
@@ -23,8 +22,9 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/theme.js"></script>
 </head>
-<body>
-  <!-- ===== Íconos (sprite SVG reutilizable: <svg><use href="#i-nombre"/></svg>) ===== -->
+<body data-audience="jugadores">
+  <!-- ===== Íconos (sprite SVG reutilizable: <svg><use href="#i-nombre"/></svg>) =====
+       Si agregás un ícono, agregalo también en complejos.html -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
@@ -48,6 +48,7 @@
       <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
       <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
       <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
       <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
       <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V2c1 3 3 5 6 5"/></symbol>
@@ -57,25 +58,30 @@
 
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- ===================== HEADER ===================== -->
+  <!-- ===================== HEADER (con selector de público) ===================== -->
   <header class="site-header" data-header>
+    <nav class="audience-bar" aria-label="Elige tu perfil">
+      <div class="container audience-bar__inner">
+        <span class="audience-bar__label">Soy:</span>
+        <a class="audience-bar__link" href="index.html" aria-current="page"><svg><use href="#i-ball"/></svg> Jugador</a>
+        <a class="audience-bar__link" href="complejos.html"><svg><use href="#i-building"/></svg> Dueño de complejo</a>
+      </div>
+    </nav>
     <div class="container site-header__inner">
-      <a class="logo" href="#inicio" aria-label="Book & Play, inicio">
+      <a class="logo" href="index.html" aria-label="Book & Play, inicio">
         <svg class="logo__mark"><use href="#i-ball"/></svg>
         <span class="logo__text">Book<span class="logo__amp">&amp;</span>Play</span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Principal">
         <ul class="nav__list">
-          <li><a href="#funcionalidades">Funcionalidades</a></li>
-          <li><a href="#como-funciona">Cómo funciona</a></li>
-          <li><a href="#precios">Precios</a></li>
+          <li><a href="#funcionalidades">Beneficios</a></li>
+          <li><a href="#como-reservar">Cómo reservar</a></li>
+          <li><a href="#recompensas">Recompensas</a></li>
           <li><a href="#preguntas">Preguntas</a></li>
-          <li><a href="#contacto">Contacto</a></li>
         </ul>
         <div class="nav__cta">
-          <a class="btn btn--ghost btn--sm" href="#app">Descargar app</a>
-          <a class="btn btn--primary btn--sm" href="#contacto">Afiliar mi cancha</a>
+          <a class="btn btn--primary btn--sm" href="#app">Descargar app</a>
         </div>
       </nav>
 
@@ -86,21 +92,21 @@
   </header>
 
   <main id="contenido">
-    <!-- ===================== HERO ===================== -->
+    <!-- ===================== HERO (jugadores) ===================== -->
     <section class="hero" id="inicio">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="pill"><span class="pill__dot"></span> Fútbol 5 · Fútbol 7 · Pádel — San Pedro Sula</p>
-          <h1 class="hero__title">Reserva tu cancha <span class="hl">en segundos.</span> Llena tus horarios <span class="hl">sin llamadas.</span></h1>
-          <p class="hero__lead">Book &amp; Play conecta a los jugadores con los complejos deportivos: busca, compara y aparta tu cancha con el 50% de anticipo. Si eres dueño, olvídate de las ausencias y del cuaderno de reservas.</p>
+          <p class="pill"><span class="pill__dot"></span> Para jugadores · Fútbol 5 · Fútbol 7 · Pádel</p>
+          <h1 class="hero__title">Reserva tu cancha <span class="hl">en segundos.</span></h1>
+          <p class="hero__lead">Busca canchas de fútbol y pádel en San Pedro Sula, compara precios y aparta tu horario con el 50% de anticipo. Sin llamar, sin esperar respuesta por chat.</p>
           <div class="hero__ctas">
-            <a class="btn btn--primary btn--lg" href="#contacto">Afiliar mi complejo <svg><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--outline btn--lg" href="#app">Quiero jugar</a>
+            <a class="btn btn--primary btn--lg" href="#app">Descargar la app <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--outline btn--lg" href="#como-reservar">¿Cómo funciona?</a>
           </div>
           <ul class="hero__trust">
             <li><svg><use href="#i-check"/></svg> Descarga gratis</li>
-            <li><svg><use href="#i-check"/></svg> Afiliación guiada en persona</li>
-            <li><svg><use href="#i-check"/></svg> Soporte por WhatsApp</li>
+            <li><svg><use href="#i-check"/></svg> Cupo garantizado</li>
+            <li><svg><use href="#i-check"/></svg> Horas gratis por jugar</li>
           </ul>
         </div>
 
@@ -132,7 +138,7 @@
           </div>
           <div class="float-card float-card--a">
             <span class="float-card__icon"><svg><use href="#i-shield"/></svg></span>
-            <div><strong>Reserva confirmada</strong><small>Anticipo del 50% recibido</small></div>
+            <div><strong>Reserva confirmada</strong><small>Tu cupo está garantizado</small></div>
           </div>
           <div class="float-card float-card--b">
             <span class="float-card__icon float-card__icon--accent"><svg><use href="#i-gift"/></svg></span>
@@ -145,175 +151,80 @@
     <!-- ===================== DATOS CLAVE ===================== -->
     <section class="facts" aria-label="Datos clave">
       <div class="container facts__grid">
-        <div class="fact"><strong>24/7</strong><span>Reservas en línea, sin llamar</span></div>
-        <div class="fact"><strong>50%</strong><span>Anticipo que asegura cada turno</span></div>
+        <div class="fact"><strong>24/7</strong><span>Reserva a cualquier hora</span></div>
+        <div class="fact"><strong>50%</strong><span>de anticipo y tu cupo es tuyo</span></div>
         <div class="fact"><strong>1 hora</strong><span>gratis al acumular 60 minutos</span></div>
-        <div class="fact"><strong>App + Web</strong><span>Android, iOS y navegador</span></div>
+        <div class="fact"><strong>$0</strong><span>Descargar y reservar es gratis</span></div>
       </div>
     </section>
 
-    <!-- ===================== PROBLEMA → SOLUCIÓN ===================== -->
-    <section class="section" id="propuesta">
+    <!-- ===================== BENEFICIOS ===================== -->
+    <section class="section" id="funcionalidades">
       <div class="container">
         <header class="section__head">
-          <p class="eyebrow">Propuesta de valor</p>
-          <h2 class="section__title">Adiós al cuaderno, al Excel y a los mensajes sin responder</h2>
-          <p class="section__lead">La mayoría de los complejos todavía gestionan sus reservas a mano. Book &amp; Play automatiza todo el proceso para que el dueño gane tiempo y el jugador juegue más.</p>
+          <p class="eyebrow">Beneficios</p>
+          <h2 class="section__title">Todo lo que necesitas para armar el partido</h2>
+          <p class="section__lead">Olvídate de llamar a cada complejo para preguntar si hay cancha. Con Book &amp; Play ves la disponibilidad real y reservas al instante.</p>
         </header>
-
-        <div class="compare">
-          <div class="compare__col compare__col--before reveal">
-            <h3>Sin Book &amp; Play</h3>
-            <ul>
-              <li><svg><use href="#i-x"/></svg> Llamadas y chats para preguntar disponibilidad</li>
-              <li><svg><use href="#i-x"/></svg> Reservas falsas y equipos que no llegan</li>
-              <li><svg><use href="#i-x"/></svg> Horarios vacíos que nadie se entera que existen</li>
-              <li><svg><use href="#i-x"/></svg> Control en papel, sin datos para decidir</li>
-            </ul>
-          </div>
-          <div class="compare__col compare__col--after reveal">
-            <h3>Con Book &amp; Play</h3>
-            <ul>
-              <li><svg><use href="#i-check"/></svg> Disponibilidad en tiempo real, reserva en segundos</li>
-              <li><svg><use href="#i-check"/></svg> Anticipo obligatorio del 50%: cero ausencias</li>
-              <li><svg><use href="#i-check"/></svg> Tu cancha visible para miles de jugadores</li>
-              <li><svg><use href="#i-check"/></svg> Panel con estadísticas e inteligencia artificial</li>
-            </ul>
-          </div>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card__icon"><svg><use href="#i-search"/></svg></span>
+            <h3>Busca y filtra</h3>
+            <p>Encuentra canchas de fútbol o pádel por zona, horario y precio. Compara en segundos.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg><use href="#i-clock"/></svg></span>
+            <h3>Reserva 24/7</h3>
+            <p>Aparta tu turno a cualquier hora, incluso de madrugada, sin depender de que alguien te conteste.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg><use href="#i-card"/></svg></span>
+            <h3>Pago seguro</h3>
+            <p>Paga el 50% de anticipo desde la app y llega a jugar con tu cupo garantizado.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg><use href="#i-gift"/></svg></span>
+            <h3>Recompensas</h3>
+            <p>Cada reserva suma 5 minutos. Al llegar a 60 minutos, tu siguiente hora es gratis.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg><use href="#i-star"/></svg></span>
+            <h3>Calificaciones</h3>
+            <p>Lee opiniones de otros jugadores y califica las canchas después de cada partido.</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__icon"><svg><use href="#i-share"/></svg></span>
+            <h3>Comparte con tu equipo</h3>
+            <p>Envía la reserva a tu grupo por WhatsApp o redes para que nadie se pierda el partido.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ===================== FUNCIONALIDADES (tabs) ===================== -->
-    <section class="section section--alt" id="funcionalidades">
+    <!-- ===================== CÓMO RESERVAR ===================== -->
+    <section class="section section--alt" id="como-reservar">
       <div class="container">
         <header class="section__head">
-          <p class="eyebrow">Funcionalidades</p>
-          <h2 class="section__title">Una plataforma, dos lados de la cancha</h2>
+          <p class="eyebrow">Cómo reservar</p>
+          <h2 class="section__title">De la app a la cancha en 3 pasos</h2>
         </header>
-
-        <div class="tabs" data-tabs>
-          <div class="tabs__list" role="tablist" aria-label="Tipo de usuario">
-            <button class="tabs__tab" role="tab" id="tab-duenos" aria-controls="panel-duenos" aria-selected="true">Para dueños de canchas</button>
-            <button class="tabs__tab" role="tab" id="tab-jugadores" aria-controls="panel-jugadores" aria-selected="false" tabindex="-1">Para jugadores</button>
-          </div>
-
-          <div class="tabs__panel" role="tabpanel" id="panel-duenos" aria-labelledby="tab-duenos">
-            <div class="cards">
-              <article class="card reveal">
-                <span class="card__icon"><svg><use href="#i-calendar"/></svg></span>
-                <h3>Agenda automática</h3>
-                <p>Tus horarios, precios y canchas en un solo lugar. Las reservas entran solas, de día y de noche.</p>
-              </article>
-              <article class="card reveal">
-                <span class="card__icon"><svg><use href="#i-shield"/></svg></span>
-                <h3>Anticipo del 50%</h3>
-                <p>Cada reserva se confirma con pago anticipado. Menos ausencias y un ingreso asegurado por turno.</p>
-              </article>
-              <article class="card reveal">
-                <span class="card__icon"><svg><use href="#i-sparkles"/></svg></span>
-                <h3>Estadísticas con IA</h3>
-                <p>Conoce tus horas pico, tus mejores clientes y recibe sugerencias para llenar los horarios flojos.</p>
-              </article>
-              <article class="card reveal">
-                <span class="card__icon"><svg><use href="#i-qr"/></svg></span>
-                <h3>Enlace y código QR propio</h3>
-                <p>Tu complejo tiene su perfil con QR para tus instalaciones y un enlace para compartir en redes.</p>
-              </article>
-              <article class="card reveal">
-                <span class="card__icon"><svg><use href="#i-bell"/></svg></span>
-                <h3>Notificaciones automáticas</h3>
-                <p>Confirmaciones, recordatorios antes del partido y avisos de cancelación sin mover un dedo.</p>
-              </article>
-              <article class="card reveal">
-                <span class="card__icon"><svg><use href="#i-search"/></svg></span>
-                <h3>Más visibilidad</h3>
-                <p>Aparece en las búsquedas de jugadores de tu zona y destaca con el posicionamiento del Plan Premium.</p>
-              </article>
-            </div>
-          </div>
-
-          <div class="tabs__panel" role="tabpanel" id="panel-jugadores" aria-labelledby="tab-jugadores" hidden>
-            <div class="cards">
-              <article class="card">
-                <span class="card__icon"><svg><use href="#i-search"/></svg></span>
-                <h3>Busca y filtra</h3>
-                <p>Encuentra canchas de fútbol o pádel por zona, horario y precio. Compara en segundos.</p>
-              </article>
-              <article class="card">
-                <span class="card__icon"><svg><use href="#i-clock"/></svg></span>
-                <h3>Reserva 24/7</h3>
-                <p>Aparta tu turno a cualquier hora sin llamar ni esperar respuesta por chat.</p>
-              </article>
-              <article class="card">
-                <span class="card__icon"><svg><use href="#i-card"/></svg></span>
-                <h3>Pago seguro</h3>
-                <p>Paga el 50% de anticipo desde la app y llega a jugar con tu cupo garantizado.</p>
-              </article>
-              <article class="card">
-                <span class="card__icon"><svg><use href="#i-gift"/></svg></span>
-                <h3>Recompensas</h3>
-                <p>Cada reserva suma 5 minutos. Al llegar a 60 minutos, tu siguiente hora es gratis.</p>
-              </article>
-              <article class="card">
-                <span class="card__icon"><svg><use href="#i-star"/></svg></span>
-                <h3>Calificaciones</h3>
-                <p>Lee opiniones de otros jugadores y califica las canchas después de cada partido.</p>
-              </article>
-              <article class="card">
-                <span class="card__icon"><svg><use href="#i-share"/></svg></span>
-                <h3>Comparte con tu equipo</h3>
-                <p>Envía la reserva a tu grupo por WhatsApp o redes para que nadie se pierda el partido.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== PANEL PARA DUEÑOS ===================== -->
-    <section class="section" id="panel">
-      <div class="container split">
-        <div class="split__copy">
-          <p class="eyebrow">Panel de control</p>
-          <h2 class="section__title">Decisiones con datos, no con corazonadas</h2>
-          <p class="section__lead">Desde cualquier computadora o teléfono ves la ocupación de tus canchas, tus ingresos por anticipos y el comportamiento de tus clientes. La inteligencia artificial te avisa qué horarios promocionar.</p>
-          <ul class="checklist">
-            <li><svg><use href="#i-check"/></svg> Ocupación por cancha, día y hora</li>
-            <li><svg><use href="#i-check"/></svg> Reportes periódicos de reservas e ingresos</li>
-            <li><svg><use href="#i-check"/></svg> Clientes frecuentes y calificaciones</li>
-            <li><svg><use href="#i-check"/></svg> Sugerencias inteligentes de precios y promociones</li>
-          </ul>
-          <a class="btn btn--primary" href="#contacto">Pedir una demo <svg><use href="#i-arrow"/></svg></a>
-        </div>
-
-        <!-- Mockup del dashboard (datos ilustrativos) -->
-        <div class="dash reveal" aria-hidden="true">
-          <div class="dash__top">
-            <span class="dash__dots"><i></i><i></i><i></i></span>
-            <span class="dash__title">Panel · Complejo Demo</span>
-          </div>
-          <div class="dash__kpis">
-            <div><small>Ocupación</small><strong>78%</strong><em class="up">▲ 12%</em></div>
-            <div><small>Reservas semana</small><strong>64</strong><em class="up">▲ 9</em></div>
-            <div><small>Ausencias</small><strong>0</strong><em class="up">con anticipo</em></div>
-          </div>
-          <div class="dash__chart">
-            <div class="dash__bars">
-              <span style="--h:45%"><b>Lun</b></span>
-              <span style="--h:52%"><b>Mar</b></span>
-              <span style="--h:60%"><b>Mié</b></span>
-              <span style="--h:70%"><b>Jue</b></span>
-              <span style="--h:92%" class="is-peak"><b>Vie</b></span>
-              <span style="--h:100%" class="is-peak"><b>Sáb</b></span>
-              <span style="--h:80%"><b>Dom</b></span>
-            </div>
-          </div>
-          <div class="dash__ai">
-            <svg><use href="#i-sparkles"/></svg>
-            <p><strong>Sugerencia IA:</strong> los martes de 4 a 6 PM tienen 30% de ocupación. Prueba una promoción de “hora feliz”.</p>
-          </div>
-        </div>
+        <ol class="steps steps--3">
+          <li class="step reveal">
+            <span class="step__num">1</span>
+            <h3>Busca tu cancha</h3>
+            <p>Elige deporte, zona y horario. Ve precios, fotos y calificaciones.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">2</span>
+            <h3>Reserva y paga el 50%</h3>
+            <p>Confirma con el anticipo desde la app. El resto lo pagas en el complejo.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">3</span>
+            <h3>Juega y suma minutos</h3>
+            <p>Recibe un recordatorio antes del partido y gana 5 minutos para tu hora gratis.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -347,110 +258,47 @@
       </div>
     </section>
 
-    <!-- ===================== CÓMO FUNCIONA ===================== -->
-    <section class="section" id="como-funciona">
+    <!-- ===================== PLANES JUGADOR ===================== -->
+    <section class="section" id="planes">
       <div class="container">
         <header class="section__head">
-          <p class="eyebrow">Cómo funciona</p>
-          <h2 class="section__title">Empieza fácil y siempre acompañado</h2>
-          <p class="section__lead">Nuestro equipo está en San Pedro Sula: te visitamos, configuramos tu complejo contigo y te damos soporte desde el primer día.</p>
+          <p class="eyebrow">Planes</p>
+          <h2 class="section__title">Gratis para jugar</h2>
+          <p class="section__lead">Descargar la app y reservar no tiene costo. Si prefieres una experiencia sin anuncios, hay una opción mensual.</p>
         </header>
-
-        <ol class="steps">
-          <li class="step reveal">
-            <span class="step__num">1</span>
-            <h3>Demo en persona</h3>
-            <p>Te mostramos el panel en tu complejo y resolvemos tus dudas.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num">2</span>
-            <h3>Afiliación guiada</h3>
-            <p>Registramos contigo tus canchas, horarios, precios e imágenes.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num">3</span>
-            <h3>Publicación y QR</h3>
-            <p>Tu cancha queda visible desde el primer día, con su código QR y enlace propio.</p>
-          </li>
-          <li class="step reveal">
-            <span class="step__num">4</span>
-            <h3>Soporte continuo</h3>
-            <p>Capacitación, soporte técnico por WhatsApp y visitas de seguimiento.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===================== PRECIOS ===================== -->
-    <section class="section section--alt" id="precios">
-      <div class="container">
-        <header class="section__head">
-          <p class="eyebrow">Precios</p>
-          <h2 class="section__title">Planes simples, sin sorpresas</h2>
-          <p class="section__lead">Para el jugador, la app es gratis. Para el complejo, solo pagas cuando recibes reservas.</p>
-        </header>
-
-        <!-- TODO equipo: confirmar comisión final y oferta de lanzamiento (el plan de negocios sugiere bajar a 6–8% al inicio) -->
-        <div class="promo-banner reveal">
-          <svg><use href="#i-trophy"/></svg>
-          <p><strong>Oferta de lanzamiento:</strong> los primeros complejos afiliados en San Pedro Sula reciben comisión reducida y el Plan Premium bonificado durante los primeros meses.</p>
-        </div>
-
-        <div class="pricing">
+        <div class="pricing pricing--two">
           <article class="plan reveal">
-            <p class="plan__tag">Complejos</p>
-            <h3 class="plan__name">Básico</h3>
-            <p class="plan__price"><span class="plan__amount">$0</span><span class="plan__period">/mes</span></p>
-            <p class="plan__desc">Solo una comisión del <strong>10%</strong> por reserva completada.</p>
-            <ul class="plan__list">
-              <li><svg><use href="#i-check"/></svg> Perfil del complejo en la app</li>
-              <li><svg><use href="#i-check"/></svg> Reservas en línea 24/7</li>
-              <li><svg><use href="#i-check"/></svg> Cobro de anticipo del 50%</li>
-              <li><svg><use href="#i-check"/></svg> Enlace y código QR</li>
-              <li><svg><use href="#i-check"/></svg> Soporte por WhatsApp</li>
-            </ul>
-            <a class="btn btn--outline btn--block" href="#contacto" data-plan="Básico">Afiliar mi complejo</a>
-          </article>
-
-          <article class="plan plan--featured reveal">
-            <p class="plan__badge">Recomendado</p>
-            <p class="plan__tag">Complejos</p>
-            <h3 class="plan__name">Premium</h3>
-            <p class="plan__price"><span class="plan__amount">$15</span><span class="plan__period">/mes</span></p>
-            <p class="plan__desc">Todo lo del Básico, más herramientas para crecer.</p>
-            <ul class="plan__list">
-              <li><svg><use href="#i-check"/></svg> Dashboard con estadísticas e IA</li>
-              <li><svg><use href="#i-check"/></svg> Notificaciones automáticas</li>
-              <li><svg><use href="#i-check"/></svg> Posicionamiento destacado en búsquedas</li>
-              <li><svg><use href="#i-check"/></svg> Reportes periódicos</li>
-              <li><svg><use href="#i-check"/></svg> Visitas de seguimiento</li>
-            </ul>
-            <a class="btn btn--primary btn--block" href="#contacto" data-plan="Premium">Quiero el Premium</a>
-          </article>
-
-          <article class="plan reveal">
-            <p class="plan__tag">Jugadores</p>
-            <h3 class="plan__name">Gratis / Sin anuncios</h3>
-            <p class="plan__price"><span class="plan__amount">$0</span><span class="plan__period">· o $5/mes sin anuncios</span></p>
-            <p class="plan__desc">Descarga la app y reserva sin costo extra.</p>
+            <h3 class="plan__name">Gratis</h3>
+            <p class="plan__price"><span class="plan__amount">$0</span><span class="plan__period">siempre</span></p>
+            <p class="plan__desc">Todo lo que necesitas para reservar y jugar.</p>
             <ul class="plan__list">
               <li><svg><use href="#i-check"/></svg> Búsqueda y filtros de canchas</li>
               <li><svg><use href="#i-check"/></svg> Reserva con cupo garantizado</li>
               <li><svg><use href="#i-check"/></svg> Programa de recompensas</li>
               <li><svg><use href="#i-check"/></svg> Recordatorios antes del partido</li>
-              <li><svg><use href="#i-check"/></svg> Opción sin anuncios por $5/mes</li>
             </ul>
-            <a class="btn btn--outline btn--block" href="#app">Descargar la app</a>
+            <a class="btn btn--outline btn--block" href="#app">Descargar gratis</a>
+          </article>
+          <article class="plan plan--featured reveal">
+            <h3 class="plan__name">Sin anuncios</h3>
+            <p class="plan__price"><span class="plan__amount">$5</span><span class="plan__period">/mes</span></p>
+            <p class="plan__desc">Lo mismo que el plan gratis, sin publicidad.</p>
+            <ul class="plan__list">
+              <li><svg><use href="#i-check"/></svg> Todo lo del plan Gratis</li>
+              <li><svg><use href="#i-check"/></svg> Cero anuncios en la app</li>
+              <li><svg><use href="#i-check"/></svg> Cancela cuando quieras</li>
+            </ul>
+            <a class="btn btn--primary btn--block" href="#app">Descargar la app</a>
           </article>
         </div>
-        <p class="fine-print">Precios en dólares estadounidenses. La pasarela de pago puede aplicar cargos propios. Consulta las <a href="legal.html#terminos">condiciones de uso</a>.</p>
+        <p class="fine-print">El precio de cada cancha lo define el complejo. Consulta nuestra <a href="legal.html#cancelacion">política de cancelación</a>.</p>
       </div>
     </section>
 
     <!-- ===================== TESTIMONIOS ===================== -->
     <!-- IMPORTANTE: estos testimonios son PLANTILLAS. Reemplazarlos por testimonios reales
-         (con permiso) de los complejos y jugadores del piloto antes de publicar. -->
-    <section class="section" id="testimonios">
+         (con permiso) de jugadores del piloto antes de difundir el sitio. -->
+    <section class="section section--alt" id="testimonios">
       <div class="container">
         <header class="section__head">
           <p class="eyebrow">Testimonios</p>
@@ -458,16 +306,12 @@
         </header>
         <div class="quotes">
           <figure class="quote reveal">
-            <blockquote>“[Testimonio pendiente] Antes pasábamos el día respondiendo mensajes. Ahora las reservas llegan solas y con el anticipo ya no tenemos equipos que no llegan.”</blockquote>
-            <figcaption><span class="avatar">DC</span><span><strong>Nombre del dueño</strong><small>Complejo piloto · San Pedro Sula</small></span></figcaption>
-          </figure>
-          <figure class="quote reveal">
             <blockquote>“[Testimonio pendiente] Reservo la cancha del jueves desde el trabajo en un minuto, y con los minutos acumulados ya me gané una hora gratis.”</blockquote>
             <figcaption><span class="avatar">JF</span><span><strong>Nombre del jugador</strong><small>Fútbol 7 · Jugador frecuente</small></span></figcaption>
           </figure>
           <figure class="quote reveal">
-            <blockquote>“[Testimonio pendiente] El panel me mostró que los martes en la tarde estaban vacíos. Hicimos una promoción y se llenaron.”</blockquote>
-            <figcaption><span class="avatar">AP</span><span><strong>Nombre del administrador</strong><small>Club de pádel piloto</small></span></figcaption>
+            <blockquote>“[Testimonio pendiente] Antes era un relajo conseguir cancha para pádel en la noche. Ahora veo qué horarios hay libres y listo.”</blockquote>
+            <figcaption><span class="avatar">MP</span><span><strong>Nombre de la jugadora</strong><small>Pádel · San Pedro Sula</small></span></figcaption>
           </figure>
         </div>
       </div>
@@ -478,7 +322,7 @@
       <div class="container">
         <div class="app-banner reveal">
           <div>
-            <p class="eyebrow eyebrow--on-primary">Para jugadores</p>
+            <p class="eyebrow eyebrow--on-primary">Descarga</p>
             <h2>Descarga la app y reserva al instante</h2>
             <p>Disponible próximamente en Android y iOS. También puedes reservar desde el navegador, sin descargar nada.</p>
           </div>
@@ -492,7 +336,7 @@
     </section>
 
     <!-- ===================== FAQ ===================== -->
-    <section class="section section--alt" id="preguntas">
+    <section class="section" id="preguntas">
       <div class="container container--narrow">
         <header class="section__head">
           <p class="eyebrow">Preguntas frecuentes</p>
@@ -500,8 +344,8 @@
         </header>
         <div class="faq">
           <details class="faq__item">
-            <summary>¿Por qué se cobra un anticipo del 50%?</summary>
-            <p>El anticipo confirma que la reserva es real. Al jugador le garantiza su cupo y al dueño le asegura el ingreso del turno, eliminando las reservas falsas y las ausencias.</p>
+            <summary>¿Por qué tengo que pagar un anticipo del 50%?</summary>
+            <p>El anticipo confirma tu reserva y te garantiza el cupo: nadie más puede apartar ese horario. El 50% restante lo pagas directamente en el complejo.</p>
           </details>
           <details class="faq__item">
             <summary>¿Qué pasa si necesito cancelar mi reserva?</summary>
@@ -512,12 +356,8 @@
             <p>Cada reserva completada te suma 5 minutos. Cuando acumulas 60 minutos, puedes canjearlos por una hora gratis en los complejos participantes.</p>
           </details>
           <details class="faq__item">
-            <summary>Soy dueño de un complejo, ¿cuánto cuesta afiliarme?</summary>
-            <p>La afiliación no tiene costo inicial. En el Plan Básico solo pagas una comisión por cada reserva completada; el Plan Premium cuesta $15 al mes e incluye el dashboard con estadísticas e IA.</p>
-          </details>
-          <details class="faq__item">
-            <summary>¿Necesito conocimientos técnicos para usar el panel?</summary>
-            <p>No. Nuestro equipo te acompaña en la configuración y te capacita. El panel funciona desde cualquier computadora o teléfono.</p>
+            <summary>¿Tengo que descargar la app para reservar?</summary>
+            <p>No es obligatorio. Puedes reservar desde el navegador de tu teléfono o computadora. La app te da notificaciones y una experiencia más rápida.</p>
           </details>
           <details class="faq__item">
             <summary>¿En qué ciudades está disponible?</summary>
@@ -531,80 +371,17 @@
       </div>
     </section>
 
-    <!-- ===================== CONTACTO / CTA FINAL ===================== -->
-    <section class="section section--dark" id="contacto">
-      <div class="container split split--top">
-        <div class="split__copy">
-          <p class="eyebrow eyebrow--on-dark">Contacto</p>
-          <h2 class="section__title">¿Listo para llenar tus horarios?</h2>
-          <p class="section__lead">Déjanos tus datos y te contactamos para agendar una demo en tu complejo. Cero ausencias, más eficiencia e ingresos.</p>
-          <ul class="checklist checklist--on-dark">
-            <li><svg><use href="#i-check"/></svg> Sin costo de afiliación</li>
-            <li><svg><use href="#i-check"/></svg> Configuración guiada en persona</li>
-            <li><svg><use href="#i-check"/></svg> Soporte desde el día uno</li>
-          </ul>
-          <div class="contact-direct">
-            <a class="contact-direct__item" href="#" data-wa-link><svg><use href="#i-chat"/></svg> Escríbenos por WhatsApp</a>
-            <a class="contact-direct__item" href="#" data-email-link><svg><use href="#i-mail"/></svg> <span data-email-text>correo</span></a>
-          </div>
-        </div>
-
-        <form class="form" data-contact-form novalidate>
-          <h3 class="form__title">Solicita una demo</h3>
-          <div class="form__row">
-            <label class="field">
-              <span>Nombre *</span>
-              <input type="text" name="nombre" autocomplete="name" required>
-            </label>
-            <label class="field">
-              <span>Teléfono *</span>
-              <input type="tel" name="telefono" autocomplete="tel" inputmode="tel" placeholder="+504" required>
-            </label>
-          </div>
-          <label class="field">
-            <span>Nombre del complejo</span>
-            <input type="text" name="complejo" autocomplete="organization">
-          </label>
-          <div class="form__row">
-            <label class="field">
-              <span>Tu rol *</span>
-              <select name="rol" required>
-                <option value="">Selecciona…</option>
-                <option>Dueño</option>
-                <option>Administrador</option>
-                <option>Jugador</option>
-                <option>Otro</option>
-              </select>
-            </label>
-            <label class="field">
-              <span>Ciudad</span>
-              <select name="ciudad">
-                <option>San Pedro Sula</option>
-                <option>Choloma</option>
-                <option>Villanueva</option>
-                <option>La Lima</option>
-                <option>El Progreso</option>
-                <option>Tegucigalpa</option>
-                <option>Otra</option>
-              </select>
-            </label>
-          </div>
-          <label class="field">
-            <span>Plan de interés</span>
-            <select name="plan">
-              <option>No estoy seguro</option>
-              <option>Básico</option>
-              <option>Premium</option>
-            </select>
-          </label>
-          <label class="field">
-            <span>Mensaje</span>
-            <textarea name="mensaje" rows="3" placeholder="¿Cuántas canchas tienes? ¿Qué te gustaría mejorar?"></textarea>
-          </label>
-          <p class="form__error" role="alert" hidden data-form-error>Completa los campos marcados con *.</p>
-          <button class="btn btn--primary btn--block btn--lg" type="submit"><svg><use href="#i-chat"/></svg> Enviar por WhatsApp</button>
-          <p class="form__note">Al enviar se abrirá WhatsApp con tu mensaje listo. Lee nuestra <a href="legal.html#privacidad">política de privacidad</a>.</p>
-        </form>
+    <!-- ===================== CRUCE AL OTRO PÚBLICO ===================== -->
+    <section class="section section--tight">
+      <div class="container">
+        <a class="cross-banner reveal" href="complejos.html">
+          <span class="cross-banner__icon"><svg><use href="#i-building"/></svg></span>
+          <span class="cross-banner__text">
+            <strong>¿Tienes un complejo deportivo?</strong>
+            <span>Recibe reservas automáticas, cero ausencias y estadísticas con IA.</span>
+          </span>
+          <span class="cross-banner__cta">Conoce Book &amp; Play para complejos <svg><use href="#i-arrow"/></svg></span>
+        </a>
       </div>
     </section>
   </main>
@@ -613,7 +390,7 @@
   <footer class="site-footer">
     <div class="container site-footer__grid">
       <div class="site-footer__brand">
-        <a class="logo logo--light" href="#inicio">
+        <a class="logo logo--light" href="index.html">
           <svg class="logo__mark"><use href="#i-ball"/></svg>
           <span class="logo__text">Book<span class="logo__amp">&amp;</span>Play</span>
         </a>
@@ -626,25 +403,27 @@
         </div>
       </div>
       <div>
-        <h4>Producto</h4>
+        <h4>Jugadores</h4>
         <ul>
-          <li><a href="#funcionalidades">Funcionalidades</a></li>
-          <li><a href="#recompensas">Recompensas</a></li>
-          <li><a href="#precios">Precios</a></li>
-          <li><a href="#app">App para jugadores</a></li>
+          <li><a href="index.html#funcionalidades">Beneficios</a></li>
+          <li><a href="index.html#recompensas">Recompensas</a></li>
+          <li><a href="index.html#app">Descargar la app</a></li>
+          <li><a href="index.html#preguntas">Preguntas frecuentes</a></li>
         </ul>
       </div>
       <div>
-        <h4>Empresa</h4>
+        <h4>Complejos</h4>
         <ul>
-          <li><a href="#como-funciona">Afiliar mi complejo</a></li>
-          <li><a href="#preguntas">Preguntas frecuentes</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="complejos.html">Book &amp; Play para complejos</a></li>
+          <li><a href="complejos.html#precios">Planes y precios</a></li>
+          <li><a href="complejos.html#contacto">Pedir una demo</a></li>
         </ul>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h4>Contacto y legal</h4>
         <ul>
+          <li><a href="#" data-wa-link>WhatsApp</a></li>
+          <li><a href="#" data-email-link><span data-email-text>Correo</span></a></li>
           <li><a href="legal.html#terminos">Términos y condiciones</a></li>
           <li><a href="legal.html#privacidad">Política de privacidad</a></li>
           <li><a href="legal.html#cancelacion">Cancelaciones y reembolsos</a></li>
